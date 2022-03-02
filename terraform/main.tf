@@ -11,3 +11,9 @@ module "s3_for_tfstate" {
   source     = "./modules/s3_for_tfstate"
   bucket_prefix = "${var.app_name}-tfstate"
 }
+
+module "host_server" {
+  source     = "./modules/host_server"
+  app_name = var.app_name
+  domain = var.domain
+}
