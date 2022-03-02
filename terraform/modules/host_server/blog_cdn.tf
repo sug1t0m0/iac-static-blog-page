@@ -38,11 +38,11 @@ resource "aws_cloudfront_distribution" "blog_cdn" {
       locations        = ["JP"]
     }
   }
-  #viewer_certificate {
-  #  acm_certificate_arn      = aws_acm_certificate.public.arn
-  #  ssl_support_method       = "sni-only"
-  #  minimum_protocol_version = "TLSv1"
-  #}
+  viewer_certificate {
+    acm_certificate_arn      = aws_acm_certificate.public.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1"
+  }
 }
 
 resource "aws_cloudfront_origin_access_identity" "blog_cdn" {
