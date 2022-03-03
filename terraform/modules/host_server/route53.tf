@@ -23,26 +23,26 @@ resource "aws_route53_record" "public_dns_verify" {
   zone_id         = aws_route53_zone.public.id
 }
 
-#resource "aws_route53_record" "blog" {
-#  zone_id = aws_route53_zone.public.id
-#  name    = local.blog_domain
-#  type    = "A"
-#
-#  alias {
-#    name                   = aws_cloudfront_distribution.blog_cdn.domain_name
-#    zone_id                = aws_cloudfront_distribution.blog_cdn.hosted_zone_id
-#    evaluate_target_health = false
-#  }
-#}
-#
-#resource "aws_route53_record" "images" {
-#  zone_id = aws_route53_zone.public.id
-#  name    = local.images_domain
-#  type    = "A"
-#
-#  alias {
-#    name                   = aws_cloudfront_distribution.images_cdn.domain_name
-#    zone_id                = aws_cloudfront_distribution.images_cdn.hosted_zone_id
-#    evaluate_target_health = false
-#  }
-#}
+resource "aws_route53_record" "blog" {
+  zone_id = aws_route53_zone.public.id
+  name    = local.blog_domain
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.blog_cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.blog_cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "images" {
+  zone_id = aws_route53_zone.public.id
+  name    = local.images_domain
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.images_cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.images_cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+}

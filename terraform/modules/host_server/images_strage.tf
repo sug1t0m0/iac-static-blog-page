@@ -1,5 +1,5 @@
 resource "aws_s3_bucket_policy" "images_strage" {
-  bucket = aws_s3_bucket.blog_strage.id
+  bucket = aws_s3_bucket.images_strage.id
   policy = data.aws_iam_policy_document.images_strage.json
 }
 
@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "images_strage" {
     ]
 
     resources = [
-      "${aws_s3_bucket.blog_strage.arn}/*"
+      "${aws_s3_bucket.images_strage.arn}/*"
     ]
   }
 }
