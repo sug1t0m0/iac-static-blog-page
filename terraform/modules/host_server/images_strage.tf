@@ -1,10 +1,10 @@
-resource "aws_s3_bucket_policy" "images_strage" {
-  bucket = aws_s3_bucket.images_strage.id
-  policy = data.aws_iam_policy_document.images_strage.json
+resource "aws_s3_bucket_policy" "images_storage" {
+  bucket = aws_s3_bucket.images_storage.id
+  policy = data.aws_iam_policy_document.images_storage.json
 }
 
 
-data "aws_iam_policy_document" "images_strage" {
+data "aws_iam_policy_document" "images_storage" {
   statement {
     sid    = "Allow CloudFront"
     effect = "Allow"
@@ -17,22 +17,22 @@ data "aws_iam_policy_document" "images_strage" {
     ]
 
     resources = [
-      "${aws_s3_bucket.images_strage.arn}/*"
+      "${aws_s3_bucket.images_storage.arn}/*"
     ]
   }
 }
 
-resource "aws_s3_bucket" "images_strage" {
-  bucket_prefix = "${terraform.workspace}-${var.app_name}-images-strage"
+resource "aws_s3_bucket" "images_storage" {
+  bucket_prefix = "${terraform.workspace}-${var.app_name}-images-storage"
 }
 
-resource "aws_s3_bucket_acl" "images_strage" {
-  bucket = aws_s3_bucket.images_strage.id
+resource "aws_s3_bucket_acl" "images_storage" {
+  bucket = aws_s3_bucket.images_storage.id
   acl    = "private"
 }
 
-resource "aws_s3_bucket_versioning" "images_strage" {
-  bucket = aws_s3_bucket.images_strage.id
+resource "aws_s3_bucket_versioning" "images_storage" {
+  bucket = aws_s3_bucket.images_storage.id
   versioning_configuration {
     status = "Enabled"
   }

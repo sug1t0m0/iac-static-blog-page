@@ -2,8 +2,8 @@ resource "aws_cloudfront_distribution" "blog_cdn" {
 
   aliases = [local.blog_domain]
   origin {
-    domain_name = aws_s3_bucket.blog_strage.bucket_regional_domain_name
-    origin_id   = aws_s3_bucket.blog_strage.id
+    domain_name = aws_s3_bucket.blog_storage.bucket_regional_domain_name
+    origin_id   = aws_s3_bucket.blog_storage.id
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.blog_cdn.cloudfront_access_identity_path
     }
@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "blog_cdn" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.blog_strage.id
+    target_origin_id = aws_s3_bucket.blog_storage.id
 
     forwarded_values {
       query_string = false
