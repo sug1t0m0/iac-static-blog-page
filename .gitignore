@@ -33,3 +33,6 @@ override.tf.json
 
 # Ignore .env.hcl file
 *.env.hcl
+
+# Ignore .zip file
+*.zip
